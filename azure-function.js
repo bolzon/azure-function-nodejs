@@ -9,36 +9,48 @@
 
 module.exports = function (context, req) {
 
+    // inicia com response de erro
+
     context.res = {
+        status: 400,
         headers: {
             'Content-type': 'application/json'
+        },
+        body: {
+            error: 'Mensagem tem que ser { numA, numB }'
         }
     };
 
-    var params = req.body.split('&');
+    // faz validações e parse da mensagem
 
-    var keyValues = {};
-    params.forEach(p => {
-        var splitted = p.split('=');
-        keyValues[splitted.shift()] = splitted.shift();
-    });
+    if (req.body) {
 
-    var keys = Object.keys(keyValues);
+        var keyValues = {};
+        var params = req.body.split('&');
 
-    if (keys.includes('numA') && keys.includes('numB')) {
-        var response = {
-            numA: parseInt(keyValues.numA),
-            numB: parseInt(keyValues.numB)
-        };
+        params.forEach(p => {
+            var splitted = p.split('=');
+            keyValues[splitted.shift()] = splitted.shift();
+        });
 
-        response.result = response.numA + response.numB;
-        context.res.body = response;
-    }
-    else {
-        context.res.status = 400;
-        context.res.body = {
-            error: 'Mensagem tem que ser { numA, numB }'
-        };
+        var keys = Object.keys(keyValues);
+
+        if (keys.includes('numA') && keys.includes('numB')) {
+
+            var response = {
+                numA: parseInt(keyValues.numA),
+                numB: parseInt(keyValues.numB)
+            };
+
+            // calcula resultado
+
+            response.result = response.numA + response.numB;
+
+            // retorna sucesso
+
+            context.res.status = 200;
+            context.res.body = response;
+        }
     }
 
     context.done();
