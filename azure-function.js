@@ -1,3 +1,12 @@
+
+/**
+ * Azure Function que receber dois parâmetros no
+ * corpo da mensagem: numA e numB, e retorna sua soma.
+ *
+ * @author Bolzon <blzn@mail.ru>
+ * @date 21 de abril de 2018
+ */
+
 module.exports = function (context, req) {
 
     context.res = {
