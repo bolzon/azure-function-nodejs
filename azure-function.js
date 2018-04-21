@@ -1,6 +1,6 @@
 
 /**
- * Azure Function que receber dois parâmetros no
+ * Azure Function que recebe dois parâmetros no
  * corpo da mensagem: numA e numB, e retorna sua soma.
  *
  * @author Bolzon <blzn@mail.ru>
