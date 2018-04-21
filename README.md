@@ -1,7 +1,7 @@
 
 # Azure Function + NodeJS
 
-Aplicação exemplo em NodeJS para rodar no Azure Function.
+Aplicação exemplo em JavaScript para rodar no Azure Function.
 
 ## Repositório principal
 
